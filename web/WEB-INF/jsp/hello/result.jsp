@@ -11,7 +11,7 @@
     <title>Hello World</title>
 </head>
 <body>
-    本页面访问localhost:8080/(项目名/)helloworld<br>
+    本页面访问localhost:8080/(项目名/)helloworld.action<br>
     路径helloworld:在struts.xml中配置的action的 package.namespace + action.name
 </body>
 </html>
