@@ -3,9 +3,20 @@
 		"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 		"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-	<package name="default" namespace="/" extends="struts-default">
+
+	<!--包含其他配置文件-->
+	<!--<include file="struts-default.xml"></include>-->
+
+	<package name="hello" namespace="/" extends="struts-default">
 		<action name="helloworld" class="com.imooc.action.HelloWorldAction">
 			<result>/WEB-INF/jsp/hello/result.jsp</result>
+		</action>
+		<!-- 一个package可以有多个Action -->
+	</package>
+
+	<package name="test" namespace="/" extends="struts-default">
+		<action name="api" class="com.imooc.action.ServletAPIAction">
+			<result>/WEB-INF/jsp/api.jsp</result>
 		</action>
 	</package>
 
