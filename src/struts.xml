@@ -14,10 +14,48 @@
 		<!-- 一个package可以有多个Action -->
 	</package>
 
+	<!-- 4-2 三种获取Servlet API的方法 -->
 	<package name="test" namespace="/" extends="struts-default">
 		<action name="api" class="com.imooc.action.ServletAPIAction">
 			<result>/WEB-INF/jsp/api.jsp</result>
 		</action>
 	</package>
 
+	<!-- 4-4 使用通配符动态调用Action的方法-->
+	<package name="method" namespace="/method" extends="struts-default">
+		<action name="method_*" method="{1}" class="com.imooc.action.DynamicMethodAction">
+			<result>/WEB-INF/jsp/dynamicMethod/execute.jsp</result>
+			<result name="add">/WEB-INF/jsp/dynamicMethod/add.jsp</result>
+			<result name="update">/WEB-INF/jsp/dynamicMethod/update.jsp</result>
+		</action>
+	</package>
+
+	<!-- 4-6 默认Action-->
+	<package name="default" namespace="/" extends="struts-default">
+		<default-action-ref name="404"/>
+		<action name="404">
+			<result>/WEB-INF/jsp/common/404.jsp</result>
+		</action>
+	</package>
+
+	<!--
+		4-7 扩展访问路径的后缀
+			1. 可以拦截.html为后缀的访问
+			2. 添加多个路径时用英文的逗号隔开，例如：html,do,htm,jsp,
+			3. 还可以在web.xml -> filter -> init-param中添加，或是struts.properties
+	-->
+	<!--BUG: 添加下面这行后，所有请求都无法拦截-->
+	<!--<constant name="struts.action.extension" value="html"></constant>-->
+
+	<!--
+		4-8 接收参数
+	-->
+	<package name="getParam" namespace="/" extends="struts-default">
+		<action name="preLogin" method="login" class="com.imooc.action.GetParamsAction">
+			<result name="login">/WEB-INF/jsp/param/login.jsp</result>
+		</action>
+		<action name="login" class="com.imooc.action.GetParamsAction">
+			<result>/WEB-INF/jsp/param/success.jsp</result>
+		</action>
+	</package>
 </struts>
