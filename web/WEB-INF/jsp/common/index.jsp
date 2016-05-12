@@ -38,6 +38,10 @@
     <a href="/preLogin.action">登录界面</a>
     <hr>
 
-
+    <h3>视频2：拦截器的例子</h3>
+    <p>说明：在登录前，访问"/auth/auth.action"会跳转到login.jsp页面。在登录后则不会跳转</p>
+    <a href="/auth/auth.action">后台管理页面</a><br>
+    <a href="/login.jsp">登录页面</a>
+    <hr>
 </body>
 </html>

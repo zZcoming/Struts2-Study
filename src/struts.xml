@@ -4,6 +4,8 @@
 		"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 
+	<constant name="struts.devMode" value="true"></constant>
+
 	<!--包含其他配置文件-->
 	<!--<include file="struts-default.xml"></include>-->
 
@@ -57,5 +59,35 @@
 		<action name="login" class="com.imooc.action.GetParamsAction">
 			<result>/WEB-INF/jsp/param/success.jsp</result>
 		</action>
+	</package>
+
+
+	<!--
+		以下例子为拦截器，是另一个视频中的例子，视频链接放到readme.md里
+	-->
+	<!--此处的namespace最好不要用/manager，因为Tomcat的webapps下有个工程是manager-->
+	<package name="interceptorExample" namespace="/auth" extends="struts-default">
+		<!-- 注册拦截器 -->
+		<interceptors>
+			<interceptor name="auth" class="com.imooc.interceptor.AuthInterceptor"></interceptor>
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="auth"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<action name="auth">
+			<result>/WEB-INF/jsp/manager/manager.jsp</result>
+			<result name="login">/login.jsp</result>
+
+			<!--使用拦截器栈-->
+			<interceptor-ref name="myStack"></interceptor-ref>
+		</action>
+
+		<action name="login" class="com.imooc.action.LoginAction" method="login">
+			<result>/WEB-INF/jsp/manager/manager.jsp</result>
+			<result name="login">/login.jsp</result>
+		</action>
+
 	</package>
 </struts>
