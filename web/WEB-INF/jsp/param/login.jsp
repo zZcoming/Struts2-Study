@@ -10,7 +10,7 @@
 <head>
     <title>登录</title>
 </head>
-<form action="/login.action" method="post">
+<form action="<%=request.getContextPath()%>/login.action" method="post">
     用户名：<input type="text" name="username"><br>
     密&nbsp;&nbsp;码：<input type="password" name="password"><br>
     书籍1：<input type="text" name="books[0].name"><br>

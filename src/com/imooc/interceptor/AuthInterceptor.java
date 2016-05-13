@@ -19,6 +19,7 @@ public class AuthInterceptor extends AbstractInterceptor {
 		}
 		// 未登录
 		else {
+			ServletActionContext.getRequest().setAttribute("message", "请先登录！");
 			return "login";
 		}
 	}

@@ -11,10 +11,11 @@
 	<title>登录页面</title>
 </head>
 <body>
-<form action="/auth/login.action" method="post">
+<form action="<%=request.getContextPath()%>/auth/login.action" method="post">
 	<h2>本例使用【用户名：admin   密码：123】即可登录</h2>
 	<hr>
-	${requestScope.loginError}<br>
+	<span style="color: red;">${requestScope.loginError}</span><br>
+	<span style="color: red;">${requestScope.message}</span><br>
 	用户名：<input type="text" name="username"><br>
 	密&nbsp;&nbsp;码：<input type="password" name="password"><br>
 	<input type="submit" value="登录">
